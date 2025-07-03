@@ -1,4 +1,11 @@
-# lbaw24114
+# TreasureBids
+
+Online, real-time luxury items auction platform in Laravel
+
+**ONLY FOR DEMONSTRATIVE PURPOSES**
+
+Check docs/ for webapp demo
+
 
 ## Installation
 
