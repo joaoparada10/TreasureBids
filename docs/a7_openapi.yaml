@@ -1,0 +1,821 @@
+openapi: 3.0.0
+
+info:
+  version: '1.0'
+  title: 'TreasureBids Web API'
+  description: 'Web Resources Specification (A7) for TreasureBids prototype'
+
+servers:
+  - url: http://lbaw.fe.up.pt
+    description: Production server
+  - url: http://localhost:8000
+    description: Test server
+
+tags:
+  - name: 'M01: Authentication and Individual Profile'
+  - name: 'M02: Auctions'
+  - name: 'M03: Bidding and Notifications'
+  - name: 'M04: User Administration'
+
+paths:
+
+  /login:
+    get:
+      operationId: R101
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Show login form UI.'
+
+    post:
+      operationId: R102
+      summary: 'R102: Login Action'
+      description: 'Process login form submission. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'Username for authentication.'
+                password:
+                  type: string
+                  description: 'Password for authentication.'
+              oneOf:
+                - required: [username, password]
+                - required: [email, password]
+      responses:
+        '302':
+          description: 'Redirect after login attempt.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to home with success message.'
+                  value: '/home'
+                302Error:
+                  description: 'Failed authentication. Redirect to login form with error message.'
+                  value: '/login'
+
+  /register:
+    get:
+      operationId: R103
+      summary: 'R103: Register Form'
+      description: 'Provide registration form. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Show registration form UI.'
+
+    post:
+      operationId: R104
+      summary: 'R104: Register Action'
+      description: 'Process registration form submission. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                confirm_password:
+                  type: string
+              required:
+                - username
+                - email
+                - password
+                - confirm password
+      responses:
+        '302':
+          description: 'Redirect after registration.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful registration. Redirect to profile.'
+                  value: '/profile/{username}'
+                302Error:
+                  description: 'Failed registration. Redirect back to registration form with error message.'
+                  value: '/register'
+
+  /logout:
+    get:
+      operationId: R105
+      summary: 'R105: Logout Action'
+      description: 'Log out the current user. Access: MEMBER, ADMIN'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to login form.'
+                  value: '/login'
+
+  /home:
+    get:
+      operationId: R106
+      summary: 'R106: Home Page'
+      description: 'View home page with featured auctions. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Show home page UI.'
+
+  /profile:
+    get:
+      operationId: R107
+      summary: 'R107: Redirect to Own Profile'
+      description: 'Redirect to the current user profile. Access: MEMBER'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect to /profile/{username}.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/profile/{username}'
+
+    put:
+      operationId: R108
+      summary: 'R108: Update Profile'
+      description: 'Update current user profile. Access: MEMBER'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                confirm_password:
+                  type: string
+              required:
+                - email
+      responses:
+        '302':
+          description: 'Redirect after profile update.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/profile/{username}'
+
+  /profile/{username}:
+    get:
+      operationId: R109
+      summary: 'R109: View User Profile'
+      description: 'View profile of a user. Access: GUEST'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+          description: 'Username of the profile to view.'
+      responses:
+        '200':
+          description: 'Show user profile.'
+
+  /auction/create:
+    get:
+      operationId: R201
+      summary: 'R201: Auction Creation Form'
+      description: 'Provide the form for creating a new auction. Access: MEMBER'
+      tags:
+        - 'M02: Auctions'
+      responses:
+        '200':
+          description: 'Show auction creation form UI.'
+
+  /auctions:
+    get:
+      operationId: R202
+      summary: 'R202: Manage Auctions'
+      description: 'View and manage auctions. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      responses:
+        '200':
+          description: 'Show list of auctions for admin management.'
+
+    post:
+      operationId: R203
+      summary: 'R203: Create Auction'
+      description: 'Create a new auction. Access: MEMBER'
+      tags:
+        - 'M02: Auctions'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                picture:
+                  type: string
+                  format: binary
+                description:
+                  type: string
+                starting_price:
+                  type: number
+                  format: float
+                start_date:
+                  type: string
+                  format: date-time
+                end_date:
+                  type: string
+                  format: date-time
+                discount:
+                  type: number
+                  format: float
+                buyout_price:
+                  type: number
+                  format: float
+                category:
+                  type: string
+                item_rarity:
+                  type: string
+              required:
+                - title
+                - picture
+                - description
+                - starting_price
+                - end_date
+      responses:
+        '302':
+          description: 'Redirect after auction creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Auction created successfully.'
+                  value: '/auctions/{id}'
+                302Error:
+                  description: 'Failed to create auction.'
+                  value: '/auction/create?error=true'
+
+  /auctions/{id}:
+    get:
+      operationId: R204
+      summary: 'R204: View Auction'
+      description: 'View details of a specific auction. Access: GUEST'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      responses:
+        '200':
+          description: 'Show auction details UI.'
+
+    put:
+      operationId: R205
+      summary: 'R205: Edit Auction'
+      description: 'Edit an existing auction. Access: AUCTION_OWNER or ADMIN'
+      tags:
+        - 'M02: Auctions'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                picture:
+                  type: string
+                  format: binary
+                description:
+                  type: string
+                starting_price:
+                  type: number
+                  format: float
+                end_date:
+                  type: string
+                  format: date-time
+              required:
+                - title
+                - description
+                - starting_price
+                - end_date
+      responses:
+        '302':
+          description: 'Redirect after auction edit.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/auctions/{id}'
+
+  /auctions/{id}/edit:
+    get:
+      operationId: R206
+      summary: 'R206: Auction Edit Form'
+      description: 'Provide the form for editing an auction. Access: AUCTION_OWNER or ADMIN'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      responses:
+        '200':
+          description: 'Show auction edit form.'
+
+  /auctions/delete/{id}:
+    delete:
+      operationId: R207
+      summary: 'R207: Delete Auction'
+      description: 'Delete an auction. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      responses:
+        '302':
+          description: 'Redirect after auction deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/auctions'
+
+  /auctions/{auction}/cancel:
+    delete:
+      operationId: R208
+      summary: 'R208: Cancel Auction'
+      description: 'Cancel an auction. Access: AUCTION_OWNER'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: auction
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      responses:
+        '302':
+          description: 'Redirect after auction cancellation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Auction cancelled successfully.'
+                  value: '/auctions'
+                302Error:
+                  description: 'Failed to cancel auction.'
+                  value: '/auctions/{auction}'
+
+  /auction/{auction}/bid:
+    post:
+      operationId: R301
+      summary: 'R301: Bid on Auction'
+      description: 'Place a bid on an auction. Access: MEMBER'
+      tags:
+        - 'M03: Bidding and Notifications'
+      parameters:
+        - in: path
+          name: auction
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: number
+                  format: float
+              required:
+                - value
+      responses:
+        '302':
+          description: 'Redirect after bid placement.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Bid placed successfully.'
+                  value: '/auctions/{auction}'
+                302Error:
+                  description: 'Failed to place bid.'
+                  value: '/auctions/{auction}?error=true'
+
+  /auctions/{id}/follow:
+    post:
+      operationId: R302
+      summary: 'R302: Follow/Unfollow Auction'
+      description: 'Toggle follow status for an auction. Access: MEMBER'
+      tags:
+        - 'M03: Bidding and Notifications'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Auction ID'
+      responses:
+        '302':
+          description: 'Redirect after toggling follow status.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/auctions/{id}'
+
+  /category/{category}:
+    get:
+      operationId: R209
+      summary: 'R209: View Category Auctions'
+      description: 'View auctions in a specific category. Access: GUEST'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+          description: 'Category name'
+      responses:
+        '200':
+          description: 'Show auctions in the specified category.'
+
+  /api/auctions/search:
+    get:
+      operationId: R210
+      summary: 'R210: Search Active Auctions'
+      description: 'Search active auctions with optional filters. Access: GUEST'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: query
+          name: query
+          schema:
+            type: string
+          description: 'Search term for auction titles and descriptions.'
+      responses:
+        '200':
+          description: 'Search results for active auctions.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    starting_price:
+                      type: number
+                    current_bid:
+                      type: number
+                    buyout_price:
+                      type: number
+                    discount:
+                      type: number
+                    status:
+                      type: string
+                    category:
+                      type: string
+                    item_rarity:
+                      type: string
+                    owner:
+                      type: string
+
+  /api/members/filter:
+    get:
+      operationId: R403
+      summary: 'R403: Search and Filter Members'
+      description: 'Search members with optional filters. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: 'Search term for usernames or emails.'
+      responses:
+        '200':
+          description: 'Search results for members.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    blocked:
+                      type: boolean
+
+  /api/user:
+    get:
+      operationId: R110
+      summary: 'R110: Get Authenticated User'
+      description: 'Retrieve the current authenticated user. Access: MEMBER'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Current authenticated user details.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+
+  /members:
+    get:
+      operationId: R404
+      summary: 'R404: Manage Members'
+      description: 'View and search member accounts. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      responses:
+        '200':
+          description: 'List of member accounts.'
+
+    post:
+      operationId: R405
+      summary: 'R405: Create Member Account'
+      description: 'Create a new member account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - email
+                - password
+      responses:
+        '302':
+          description: 'Redirect after member creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/members'
+
+  /members/{id}:
+    put:
+      operationId: R406
+      summary: 'R406: Update Member Account'
+      description: 'Update a member account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Member ID'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+              required:
+                - username
+                - email
+      responses:
+        '302':
+          description: 'Redirect after member update.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/members/{id}'
+
+  /members/remove/{id}:
+    delete:
+      operationId: R407
+      summary: 'R407: Delete Member Account'
+      description: 'Delete a member account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Member ID'
+      responses:
+        '302':
+          description: 'Redirect after member deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/members'
+
+  /admin/dashboard:
+    get:
+      operationId: R408
+      summary: 'R408: Admin Dashboard'
+      description: 'Provide admin dashboard view. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      responses:
+        '200':
+          description: 'Show admin dashboard UI.'
+
+  /admins:
+    get:
+      operationId: R409
+      summary: 'R409: Manage Admins'
+      description: 'View and search admin accounts. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      responses:
+        '200':
+          description: 'List of admin accounts.'
+
+    post:
+      operationId: R410
+      summary: 'R410: Create Admin Account'
+      description: 'Create a new admin account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - email
+                - password
+      responses:
+        '302':
+          description: 'Redirect after admin creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/admins'
+
+  /admins/{id}:
+    put:
+      operationId: R411
+      summary: 'R411: Update Admin Account'
+      description: 'Update an admin account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Admin ID'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+              required:
+                - username
+                - email
+      responses:
+        '302':
+          description: 'Redirect after admin update.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/admins/{id}'
+
+    delete:
+      operationId: R412
+      summary: 'R412: Delete Admin Account'
+      description: 'Delete an admin account. Access: ADMIN'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: 'Admin ID'
+      responses:
+        '302':
+          description: 'Redirect after admin deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              example: '/admins'
+

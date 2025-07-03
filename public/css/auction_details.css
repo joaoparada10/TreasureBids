@@ -1,0 +1,357 @@
+/*----    AUCTION DETAILS STUFF    ----*/
+
+.edit_details_button {
+  background-color: white;
+}
+
+.crumbs_and_edit_details_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  padding-bottom: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #cccccc;
+  padding: 1em;
+}
+
+.auction_essentials_card {
+  display: flex;
+  background-color: var(--accent-color);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: black;
+  box-shadow: 0 0 10px black;
+  /* Add a glowing effect */
+  padding: 1em;
+  margin: 1em;
+}
+
+.item_picture {
+  flex: 1;
+}
+
+  .item_picture > img {
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .auction_essentials_card_title_section{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-right: 10px solid black;
+    margin: 10px;
+    padding-right: 1em;
+    margin-right: 1em;
+    justify-content: space-between;
+  }
+  
+  .auction_essentials_card_title_section > p.bold {
+    margin-bottom: 0px !important ;
+  }
+  
+   .auction_essentials_card_bid_section{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-left: 1em;
+  } 
+  
+  .bold{
+    font-weight: bold;
+  }
+  
+  #time-left{
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+  }
+  
+  .highest_bid_value{
+    font-size: 80px;
+    color: black;
+  }
+  
+  .bid_box {
+    flex: 1;
+  }
+
+  .bid_box > input {
+    margin-bottom: 0;
+  }
+  
+  .bid_box > input {
+    border-radius: 10px;
+    border-style: solid;
+    
+  }
+  
+  .no-star{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+.place_bid_form {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.bid_button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: white;
+}
+
+.favorite {
+  font-size: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: -20px;
+  margin-right: -10px;
+  cursor: pointer;
+}
+
+.favorite>span:hover {
+  color: black;
+  /* Change color on hover */
+  transform: scale(1.2);
+  /* Make it bigger and slightly rotate */
+  text-shadow: 0 0 10px black;
+  /* Add a glowing effect */
+
+}
+
+.auction_description {
+  margin: 1em;
+  padding-bottom: 1em;
+}
+
+.auction_bidding_history {
+  margin: 1em;
+}
+
+.bidding_list {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.arrow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.arrow-tail {
+  width: 5px;
+  flex-grow: 1;
+  background-color: black;
+  /* Color of the tail */
+}
+
+.arrow-head {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid black;
+  transform: rotate(180deg);
+  /* Rotate to make it vertical */
+}
+
+.bidding_members {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.member-bid {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.member-no-value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.member-no-value:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.bid-profile>img {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bid-username {
+  color: black;
+  font-weight: bold;
+}
+
+.bid-value {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 1em;
+}
+
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* Ensure it appears on top */
+}
+
+.loader {
+  border: 6px solid black;
+  /* Light gray */
+  border-top: 6px solid black;
+  /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+}
+#follow-star{
+  color: black;
+  transition: transform 0.3s ease;
+}
+
+#follow-star:hover {
+  transform: scale(1.2);
+  
+}
+
+#follow-star.bi-star-fill{
+  color: #FFD700; /* Gold color for the inner part */
+  -webkit-text-stroke: 2px black; /* Black outline. This works for webkit-based browsers only */
+}
+
+@media (max-width: 1000px) {
+  .auction_essentials_card{
+    flex-direction: column;
+  }
+  .auction_essentials_card_title_section{
+    border: 0;
+  }
+
+  .item_picture{
+    align-self: center;
+    max-width: 1000px;
+  }
+
+  .highest_bid_value{
+    font-size: 40px;
+  }
+
+  .favorite{
+    margin-top: 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .auction-category-list{
+    flex-direction: column;
+  }
+
+  .auction-category-list>.category{
+    margin:5px;
+  }
+
+}
+
+.star-rating {
+  display: flex;
+  font-size: 2rem;
+  color: #ffc107;
+}
+.star {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+.star::before {
+  content: '\2605'; /* Unicode star symbol */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #ccc; /* Empty star color */
+}
+.star.filled::before {
+  color: #ffc107; /* Filled star color */
+}
+.star.half::after {
+  content: '\2605'; /* Unicode star symbol */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  color: #ffc107; /* Half-filled star color */
+  padding-left: 6px;
+}
+
+#star-display{
+  background-color: #5559;
+  padding-bottom: 15px;
+  max-width: 200px;
+  border-radius: 10px;
+}
+
+.test{
+  display: flex;
+  flex: 2;
+}
+
+.auction-management{
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.auction-category-list{
+  display: flex;
+  color: black;
+  margin-top: 16px;
+}
+
+.auction_essentials_card_bid_section p{
+  color: black;
+}

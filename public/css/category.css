@@ -1,0 +1,49 @@
+.current-category{
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    background-color: var(--accent-color);
+}
+
+.auction-card{
+    padding: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: space-between;
+    background-color: var(--accent-color);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.auction-card:hover {
+    transform: scale(1.1);
+}
+
+.auction-card-info{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.auction-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    justify-content: center;
+}
+
+.tags{
+    max-width: 100%; /* Ensure it doesn't exceed its container width */
+    max-width: 300px; /* Set a maximum height as needed */
+    white-space: nowrap; /* Prevent content from wrapping */
+    padding-bottom: 1em;
+}
+
+#time-left{
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+}

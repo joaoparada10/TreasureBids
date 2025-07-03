@@ -1,0 +1,254 @@
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/custom-font.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.logo-text:hover {
+    text-decoration: none;
+}
+
+
+header.navbar {
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--darker-primary);
+  padding: 0 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: var(--neutral-white);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--neutral-black);
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--neutral-white);
+  transform: scale(1.05);
+}
+
+
+#auction-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+}
+
+#auction-search-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 1.2rem;
+}
+
+#auction-search-box {
+  border-radius: 5px;
+  border: 1px solid var(--neutral-white);
+  padding: 0.5rem 1rem;
+}
+
+#auction-search-box::placeholder {
+  color: var(--neutral-black);
+  opacity: 0.7;
+}
+
+#auction-search-box:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 4px rgba(203, 161, 53, 0.4);
+}
+
+#auction-search-form .btn {
+  position: relative;
+  margin-top: -15px;
+}
+
+
+
+#search-results {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background-color: var(--neutral-white);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1050;
+  display: none;
+}
+
+#search-results .dropdown-item {
+  padding: 0.5rem 1rem;
+  color: var(--neutral-black);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#search-results .dropdown-item:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+
+
+#search-results .text-muted {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+#search-results .text-danger {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+
+.badge.bg-danger {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+
+
+
+.burger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+.burger span {
+  display: block;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styling for open state */
+.burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menu container */
+.menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 60px; /* Adjust based on burger icon position */
+  right: 20px; /* Align with burger icon */
+  background: var(--accent-color);
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  margin: 5px 0;
+}
+
+.header-button-span{
+  margin-left: 5px;
+  display: none
+}
+
+@media (max-width: 1384px) {
+  .burger {
+      display: flex; /* Show burger menu on small screens */
+  }
+
+  .header-button-span{
+    display: block;
+  }
+
+  .header-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+@media (min-width: 1385px) {
+  .menu {
+      display: flex; /* Show menu as a normal navigation bar on larger screens */
+      position: static;
+      flex-direction: row;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+  }
+
+  .menu a {
+      color: #333;
+  }
+  .dropdown{
+    display: flex;
+  }
+}
+
+@media (max-width: 550px) {
+  .navbar-brand {
+      font-size: 0.9rem !important; /* Show burger menu on small screens */
+      white-space: normal; /* Allows wrapping */
+      word-wrap: normal; /* Wraps at whitespace */
+      overflow-wrap: normal;
+      margin-right: 0px;
+  }
+  .navbar{
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+}

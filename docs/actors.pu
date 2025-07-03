@@ -1,0 +1,14 @@
+@startuml
+actor OAuth as "OAuth API"
+actor User as "User"
+actor Guest as "Guest"
+actor Member as "Member"
+actor Bidder as "Bidder"
+actor AuctionOwner as "Auction Owner"
+actor Administrator as "Administrator"
+
+User <|-- Guest
+User <|-- Member
+Member <|-- Bidder
+Member <|-- AuctionOwner
+@enduml

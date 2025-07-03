@@ -1,0 +1,53 @@
+/* Edit Auction Page */
+.container {
+  max-width: 800px;
+  
+}
+
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2C3E50; /* Deep Navy */
+}
+
+.shadow{
+  background-color: var(--accent-color) !important;
+}
+
+.form-group .form-label {
+  font-size: 1rem;
+  color: #2C3E50; /* Deep Navy */
+}
+
+.form-control {
+  
+  border: 1px solid #CBA135; /* Metallic Gold border */
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: #2C3E50; /* Deep Navy */
+  box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25); /* Subtle navy glow */
+}
+
+img.img-thumbnail {
+  border: 1px solid #CBA135; /* Metallic Gold border */
+  border-radius: 0.375rem;
+}
+
+
+
+button.btn-primary:hover {
+  background-color: #CBA135; /* Metallic Gold */
+  border-color: #CBA135;
+}
+
+
+button.btn-secondary:hover {
+  background-color: #CBA135; /* Metallic Gold */
+  border-color: #CBA135;
+  color: white;
+}

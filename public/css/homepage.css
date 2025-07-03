@@ -1,0 +1,304 @@
+.category-list{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    overflow-y : auto;
+    gap: 10px;
+}
+
+.category{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    border: 3px solid; /* Light gray */
+    border-radius: 20px;
+    white-space: nowrap;  /* Prevent text from wrapping */;
+    transition: transform 0.3s ease;
+    align-self: center;
+}
+
+.category:hover{
+    transform: scale(1.2);
+}
+
+a.category {
+    text-decoration-line: none;
+    color: inherit; 
+}
+
+.scroll-arrow{
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    color: gray;
+    cursor: pointer;
+}
+
+.preview-auction{
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    background-color: var(--accent-color);
+}
+
+.preview-title {
+    font-size: 40px;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.preview-description {
+    font-weight:normal;
+    margin-left: 5px;
+    align-self: flex-start;
+}
+
+.preview-price {
+    align-self: center;
+    margin: 0;
+    font-size: 60px;
+}
+#time-left{
+    font-weight: bold;
+    font-size: 50px;
+    color: black;
+}
+
+.preview-info {
+    flex:2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+
+
+.preview {
+    max-width: 90%;
+    margin: 1em; 
+    text-align: center;
+    overflow: hidden;  /* Ensures that off-screen cards are not visible */
+}
+
+
+
+.preview .auction-container {
+    display: flex;  /* Aligns auction cards in a row */
+    transition: transform 0.5s ease-in-out;  /* Smooth transition for sliding */
+}
+
+
+.preview .card {
+    min-width: 100%;
+    transition: opacity 2.5s ease-in-out;
+    transition: transform 0.3s ease;
+    margin: 0;
+    box-shadow: none;
+}
+
+.preview-auction:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.preview-auction {
+    display: flex;
+    opacity: 1;
+    flex:1;
+    transition: transform 2.3s ease;
+}
+
+.navButton {
+    display: flex;
+    align-items: center;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.navButton:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.category-card {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: none;
+    border:none;
+    border-radius: 0px;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.image-container {
+    max-height: 400px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    align-self: center
+}
+
+.image-container > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    min-width:100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.introduction-section {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.introduction-section .highlight {
+    color: var(--secondary-color); /* Metallic Gold for emphasis */
+    font-weight: bold;
+}
+
+.introduction-section .lead {
+    font-size: 1.5rem;
+    color: #F5F5DC;
+}
+
+.introduction-section .intro-description {
+    font-size: 1.0rem;
+    color: #F5F5DC;
+    margin-top: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.most-important-button-in-the-world{
+    font-size: 30px;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    margin-top: 1em;
+    padding: 0.5em;
+    transition: transform 0.3s ease;
+    max-width: 20em;
+    
+}
+
+a.most-important-button-in-the-world{
+    text-decoration: none;
+}
+
+.most-important-button-in-the-world:hover{
+    transform: scale(1.1);
+}
+
+.preview-title-descryption{
+    align-self: flex-start;
+    flex-direction: column;
+    display: flex;
+}
+
+
+
+.bar-container {
+    position: relative;
+    width: 80%;
+    height:3px;
+    border: 5 solid black;
+    background: #ddd;
+    border-radius: 25px;
+    overflow: show;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 1; /* Default layer order */
+    transition: transform 0.2s, z-index 0.2s; /* Smooth hover effect */
+}
+.bar-container:hover .arrow {
+    z-index: 100; /* Bring arrow to the front */
+    transform: translate(-50%, -50%) scale(1.2); /* Slightly enlarge on hover */
+}
+.value-display {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.no-results{
+    font-size: 20px;
+    color: var(--secondary-color) !important;
+    margin: 2em;
+    margin-top: 7em;
+    
+}
+
+.filter-form{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+
+.auction_essentials_card_title_section > #time-left > span{
+    font-size: 60px;
+}
+
+
+
+@media (max-width: 1086px) {
+    .preview-auction{
+        flex-direction: column;
+    }
+    .preview-title{
+        font-size: 30px;
+        
+    }
+    .preview-price{
+        margin: 0;
+        font-size: 40px;
+    }
+    .auction_essentials_card_title_section > #time-left > span{
+        font-size: 40px;
+    }
+    .preview-title-descryption{
+        align-self: center;
+    }
+}

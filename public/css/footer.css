@@ -1,0 +1,26 @@
+.footer {
+    background-color: #1A2733 !important;
+    color: var(--neutral-white);
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--secondary-color);
+}
+
+.footer span {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+}
+
+.footer span:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+    }
+
+    .footer span {
+        font-size: 0.9rem;
+    }
+}

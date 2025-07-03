@@ -1,0 +1,198 @@
+/* Admin Manage Pages Shared Styles */
+
+/* Page Title */
+.manage-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2C3E50; /* Deep Navy */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.admin-dashboard-container{
+  background-color: var(--accent-color) !important;
+}
+
+/* Section Container */
+.manage-section {
+  background-color: var(--accent-color);
+  border: 1px solid #CBA135; /* Metallic Gold */
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+.manage-button {
+  background-color: #2C3E50; /* Deep Navy */
+  border-color: #2C3E50;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.manage-button:hover {
+  background-color: #CBA135; /* Metallic Gold */
+  border-color: #CBA135;
+  transform: scale(1.05); /* Slight hover effect */
+}
+
+/* Table Styling */
+.manage-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.manage-table th,
+.manage-table td {
+  border: 1px solid #CBA135; /* Metallic Gold */
+  padding: 0.75rem;
+  text-align: left;
+  color: #2C3E50; /* Deep Navy */
+}
+
+.manage-table th {
+  background-color: #F5F5DC; /* Cream */
+  font-weight: bold;
+}
+
+.manage-table tr:nth-child(even) {
+  background-color: #F8F9FA; /* Light Gray */
+}
+
+.manage-table tr:hover {
+  background-color: #EFEFEF; /* Hover Effect */
+}
+
+/* Form Styling */
+.create-form {
+  border: 1px solid #CBA135; /* Metallic Gold */
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #F8F9FA; /* Light Gray */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-form input,
+.create-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #CBA135; /* Metallic Gold */
+  border-radius: 5px;
+}
+
+.create-form button {
+  background-color: #2C3E50; /* Deep Navy */
+  border-color: #2C3E50;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-form button:hover {
+  background-color: #CBA135; /* Metallic Gold */
+  border-color: #CBA135;
+}
+
+/* General Table Styling */
+.table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  background-color: #FFFFFF; /* Neutral White */
+  border: 1px solid #CBA135; /* Metallic Gold */
+  border-radius: 10px;
+  overflow: hidden; /* Ensures rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+  background-color: #2C3E50; /* Deep Navy */
+  color: #FFFFFF; /* White */
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #CBA135; /* Metallic Gold */
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #F5F5DC; /* Cream */
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #FFFFFF; /* White */
+}
+
+.table tbody tr:hover {
+  background-color: #EFEFEF; /* Light hover effect */
+}
+
+.table .btn {
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Edit and Save Buttons */
+.btn-warning,
+.btn-success {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-warning:hover {
+  background-color: #CBA135;
+  transform: scale(1.05);
+}
+
+.btn-success:hover {
+  background-color: #2C3E50;
+  transform: scale(1.05);
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.pagination a,
+.pagination span {
+  color: #2C3E50;
+  background-color: #FFFFFF;
+  border: 1px solid #CBA135;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #CBA135;
+  color: #FFFFFF;
+}
+
+.form-group, .form-check {
+  color:#2C3E50 !important;
+}
+.form-check {
+  padding-left: 0 !important;
+
+  .btn-success {
+    padding-left: 1.5em;
+  }
+}

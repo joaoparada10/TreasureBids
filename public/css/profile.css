@@ -1,0 +1,332 @@
+/* Overall Layout */
+.profile-container {
+    display: grid;
+    height: 100%;
+    background-color: var(--primary-color);
+    padding: 40px; 
+    gap: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--darker-primary) !important;
+    border-radius: 15px; 
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); 
+    padding: 20px;
+    margin-top: 20px; /* Space between sidebar and header */
+    margin-left: 10px; 
+    /*position: sticky; /* Sidebar sticks while scrolling */
+    top: 80px;
+}
+
+.sidebar .profileMenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap:10px;
+    justify-content: space-between;
+    min-width:210px;
+}
+
+.sidebar .menu-item {
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar .menu-item.active,
+.sidebar .menu-item:hover {
+    background-color: var(--accent-color);
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    
+}
+.sidebar .menu-item.active .nav-link {
+        color:#333 !important;
+    }
+
+.sidebar .menu-item .nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar .menu-item .nav-link i {
+    font-size: 18px; 
+}
+
+/* Profile Content Section */
+.profile-content {
+    flex:1;
+    background-color: var(--accent-color) !important;
+    color: #343a40;
+    border-radius: 15px; 
+    padding: 30px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Space from header */
+    
+}
+
+/* User Details Section */
+.content-section {
+    display: block;
+}
+
+.content-section.d-none {
+    display: none;
+}
+
+#user-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+#user-details h1 {
+    font-size: 28px;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#user-details div {
+    margin: 10px 0;
+    color: #6c757d;
+    width: 100%;
+    text-align: center;
+}
+
+#user-details .user-info-card {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Compact user card */
+    text-align: left;
+}
+
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 200px; 
+    height: 200px;
+    object-fit: cover; 
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid #dee2e6; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#profile-picture-preview img {
+    display: block;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 1000px !important;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+/* Auctions Section */
+.content-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.content-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.list-group-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.list-group-item a {
+    color: #2C3E50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+    color: #CBA135;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    flex-wrap:wrap;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.text-secondary {
+    color: #CBA135;
+}
+
+.border-bottom {
+    border-bottom: 2px solid #CBA135;
+}
+
+
+
+
+
+/* Fullscreen shadowed background */
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    z-index: 9999; /* Above most other content */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Centered card */
+.card {
+    background: #fff; /* White background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    text-align: center;
+}
+
+/* Close button */
+.close-btn {
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    background-color: red;
+}
+
+.bank {
+    display: flex;
+}
+
+.menu-item-text{
+    margin-left: 5px;
+    overflow-x:visible;
+}
+
+.profile-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.profile-own-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.choice {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.choice:hover{
+    background: 0
+}
+
+.choice::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.choice.selected::after {
+    transform: scaleX(1);
+}
+
+.choice:not(.selected):hover::after {
+    background-color: #CBA135;
+    transform: scaleX(0.5);
+}
+
+.choice.selected{
+    color: var(--primary-color)
+}
+
+.profile-auctions{
+    display: none;
+}
+
+.profile-auctions.selected{
+    display: block;
+}
+
+.auction-choice{
+    margin-bottom: 1em;
+}
+
+.date-badge{
+    white-space: wrap;
+}
+
+@media(max-width: 1000px){
+    .profile-container{
+        flex-direction: column;
+    }
+    .profileMenu.flex-column{
+        flex-direction: row !important;
+    }
+}
+
+@media(max-width: 730px){
+    .menu-item-text{
+        display: none;
+    }
+
+    .nav-link{
+        padding:0;
+    }
+}
+
+@media(max-width: 560px){
+    #user-details{
+        flex-direction: column;
+    }
+    .list-group-item{
+        flex-direction: column;
+        gap:10px;
+    }
+}
+
