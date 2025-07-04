@@ -1,10 +1,10 @@
 # TreasureBids
 
-Online, real-time luxury items auction platform in Laravel
+Real-time luxury items auction platform in Laravel
 
 **ONLY FOR DEMONSTRATIVE PURPOSES**
 
-Check docs/ for webapp demo
+Check [docs](docs/) for video demo and other useful documents.
 
 
 ## Installation
